@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'lname', 'fname', 'email', 'password',
     ];
 
     /**
@@ -37,11 +37,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function learners(){
+    public function users(){
         return $this->hasMany('App\Learner');
     }
 
-    public function Instructor(){
-        return $this->hasMany('App\Instuctor');
+    public function instructors(){
+        return $this->hasMany('App\Instructor');
+    }
+
+    public static function list(){
+        $user = User::orderByRaw('lname', 'fname')->get();
+        $list = [];
+        foreach($user as $u){
+            $list[$u->id] = $u->lname . ',' . $u->fname;
+
+        }
+        return $list;
     }
 }

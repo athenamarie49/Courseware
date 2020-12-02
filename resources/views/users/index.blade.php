@@ -16,33 +16,34 @@
     }
     
 </style>
+
+
+
 <div class="float-right">
-    <a href="{{url('/instructors/create')}}" class="btn btn-success">Add New Instructor</a>
+    <a href="{{url('/users/create')}}" class="btn btn-success">Add New User</a>
 </div>
-<h1>Instructors</h1>
+<h1>Users</h1>
 <table class="table table-bordered table-striped table-sm">
     <thead>
         <tr>
             <th>ID Number</th>
             <th>Last Name</th>
             <th>First Name</th>
-            <th>Expertise</th>
-            <th>Rating</th>
+            <th>Email</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach($instructors as $instructor)
+        @foreach($users as $user)
 
         <tr>
-            <td>{{$instructor->id}}</td>
-            <td>{{$instructor->lname}}</td>
-            <td>{{$instructor->fname}}</td>
-            <td>{{$instructor->aoe}}</td>
-            <td>{{$instructor->rating}}</td>
+            <td>{{$user->id}}</td>
+            <td>{{$user->lname}}</td>
+            <td>{{$user->fname}}</td>
+            <td>{{$user->email}}</td>
             <td>
-                <a href="{{url('/instructors/edit', ['id'=>$instructor])}}" class="btn btn-secondary btn-sm">Edit</a>
+                <a href="{{url('/users/edit', ['id'=>$user])}}" class="btn btn-secondary btn-sm">Edit</a>
             </td>
         </tr>
 
@@ -51,4 +52,3 @@
 </table>
 
 @stop
-

@@ -1,37 +1,49 @@
 @extends('base')
 
-
 @section('content')
+
+<style>
+
+    th {
+        background-color: blue;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: blue;
+    }
+    
+</style>
 
 <h1>Courses</h1>
 <table class="table table-bordered table-striped table-sm">
     <thead>
 
         <tr>
+            <th>ID Number</th>
             <th>Name</th>
             <th>Description</th>
             <th>Start</th>
             <th>End</th>
-
+            <th>Instructor</th>
         </tr>
-
+        
     </thead>
 
-        <tbody>
-            @foreach($courses as $course)
+    <tbody>
+        @foreach($courses as $course)
 
-            <tr>
+        <tr>
+            <td>{{$course->id}}</td>
+            <td>{{$course->name}}</td>
+            <td>{{$course->description}}</td>
+            <td>{{$course->start}}</td>
+            <td>{{$course->end}}</td>
+            <td>{{$course->instructors}}</td>
+        </tr>
 
-                <td>{{$course->name}}</td>
-                <td>{{$course->description}}</td>
-                <td>{{$course->start}}</td>
-                <td>{{$course->end}}</td>
-
-            </tr>
-
-            @endforeach
-        </tbody>
-
+        @endforeach
+    </tbody>
 </table>
 
 @stop
